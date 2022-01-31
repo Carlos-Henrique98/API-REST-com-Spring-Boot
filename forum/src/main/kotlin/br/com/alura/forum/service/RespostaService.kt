@@ -9,7 +9,10 @@ import java.util.*
 import java.util.stream.Collectors
 
 @Service
-class RespostaService(private var respostas: List<Resposta>) {
+class RespostaService(
+    private var respostas: List<Resposta>,
+    private val topicoService: TopicoService
+) {
 
     init {
         val curso = Curso(

@@ -1,5 +1,6 @@
 package br.com.alura.forum.controller
 
+import br.com.alura.forum.dto.AtualizacaoTopicoForm
 import br.com.alura.forum.dto.NovoTopicoForm
 import br.com.alura.forum.dto.TopicoView
 import br.com.alura.forum.model.Topico
@@ -17,12 +18,17 @@ class TopicoController(private val service: TopicoService) {
     }
 
     @GetMapping("/{id}")
-    fun buscarPorId(@PathVariable id: Long): TopicoView{
+    fun buscarPorId(@PathVariable id: Long): TopicoView {
         return service.buscarPorId(id)
     }
 
     @PostMapping
-    fun cadastrar(@RequestBody @Valid dto: NovoTopicoForm) {
-        service.cadastrar(dto)
+    fun cadastrar(@RequestBody @Valid form: NovoTopicoForm) {
+        service.cadastrar(form)
+    }
+
+    @PutMapping
+    fun atualizar(@RequestBody @Valid form: AtualizacaoTopicoForm) {
+        service.atualizar(form)
     }
 }

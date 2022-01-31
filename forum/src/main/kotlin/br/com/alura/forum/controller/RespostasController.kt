@@ -15,5 +15,4 @@ class RespostasController(private val service: RespostaService) {
     fun listar(@PathVariable id: Long): List<Resposta> {
         return service.listar(id)
     }
-
 }

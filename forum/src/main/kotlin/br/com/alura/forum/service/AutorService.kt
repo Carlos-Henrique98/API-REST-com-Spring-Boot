@@ -13,7 +13,8 @@ class UsuarioService(
         val usuario = Usuario(
             id = 1,
             nome = "Ana da Silva",
-            email = "ana@email.com.br"
+            email = "ana@email.com.br",
+            password = ""
         )
         usuarios = Arrays.asList(usuario)
     }

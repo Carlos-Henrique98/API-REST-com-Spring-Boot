@@ -7,19 +7,24 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.http.SessionCreationPolicy
-import org.springframework.security.config.http.UserDetailsServiceFactoryBean
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig(
+class SecurityConfiguration(
     private val userDetailsService: UserDetailsService
 ) : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity?) {
-        http?.authorizeRequests()?.anyRequest()?.authenticated()?.and()?.sessionManagement()
-            ?.sessionCreationPolicy(SessionCreationPolicy.STATELESS)?.and()?.formLogin()?.disable()?.httpBasic()
+        http?.
+        authorizeRequests()?.
+        antMatchers("/topicos")?.hasAuthority("LEITURA_ESCRITA")?.
+        anyRequest()?.
+        authenticated()?.
+        and()?.
+        sessionManagement()?.
+        sessionCreationPolicy(SessionCreationPolicy.STATELESS)?.and()?.formLogin()?.disable()?.httpBasic()
     }
 
     @Bean

@@ -11,16 +11,13 @@ import br.com.alura.forum.repository.TopicoRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
-import java.time.LocalDate
-import javax.persistence.EntityManager
 
 @Service
 class TopicoService(
         private val repository: TopicoRepository,
         private val topicoViewMapper: TopicoViewMapper,
         private val topicoFormMapper: TopicoFormMapper,
-        private val notFoundMessage: String = "Topico nao encontrado!",
-        private val em: EntityManager
+        private val notFoundMessage: String = "Topico nao encontrado!"
 ) {
 
     fun listar(

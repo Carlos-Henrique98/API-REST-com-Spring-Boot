@@ -55,7 +55,7 @@ class TopicoRepositoryTest{
     @Test
     fun `deve listar topico pelo nome do curso`(){
         topicoRepository.save(topico)
-        val topico = topicoRepository.findByCursoNome(topico.curso.nome, PageRequest.of(0))
+        val topico = topicoRepository.findByCursoNome(nomeCurso = "Kotlin", paginacao = paginacao)
 
         assertThat(topico).isNotNull
     }
